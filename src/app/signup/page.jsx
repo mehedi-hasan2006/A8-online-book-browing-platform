@@ -8,12 +8,41 @@ import {
   Input,
   Label,
   TextField,
+  toast,
 } from "@heroui/react";
-import Image from "next/image";
+import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 
 export default function SignupPage() {
-  const onSubmit = (e) => {
+  const router = useRouter();
+
+  const onSubmit = async (e) => {
     e.preventDefault();
+
+    const name = e.target.name.value;
+    const photoUrl = e.target.photoUrl.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    const { data, error } = await authClient.signUp.email(
+      {
+        name,
+        photoUrl,
+        email,
+        password,
+      },
+      {
+        onSuccess: (res) => {
+          //redirect to the dashboard or sign in page
+          toast.success("Registration Successful!");
+          router.push("/login");
+        },
+        onError: (res) => {
+          // display the error message
+          toast.danger(res.error.message);
+        },
+      },
+    );
   };
 
   return (
@@ -28,13 +57,13 @@ export default function SignupPage() {
         >
           <TextField isRequired name="name" type="text">
             <Label>Name</Label>
-            <Input placeholder="John Doe" />
+            <Input name="name" placeholder="John Doe" />
             <FieldError />
           </TextField>
 
           <TextField isRequired name="photoUrl" type="text">
             <Label>Enter Photo Url</Label>
-            <Input placeholder="Enter Photo Url" />
+            <Input name="photoUrl" placeholder="Enter Photo Url" />
             <FieldError />
           </TextField>
 
@@ -51,7 +80,7 @@ export default function SignupPage() {
             }}
           >
             <Label>Email</Label>
-            <Input placeholder="john@example.com" />
+            <Input name="email" placeholder="john@example.com" />
             <FieldError />
           </TextField>
 
@@ -75,7 +104,7 @@ export default function SignupPage() {
             }}
           >
             <Label>Password</Label>
-            <Input placeholder="Enter your password" />
+            <Input name="password" placeholder="Enter your password" />
             <Description>
               Must be at least 8 characters with 1 uppercase and 1 number
             </Description>
@@ -91,9 +120,9 @@ export default function SignupPage() {
               Reset
             </Button>
           </div>
-            <div className="text-center text-gray-600 font-semibold">
-                <p>OR</p>
-            </div>
+          <div className="text-center text-gray-600 font-semibold">
+            <p>OR</p>
+          </div>
           <Button className="w-full" variant="tertiary">
             <Icon icon="devicon:google" />
             Sign in with Google

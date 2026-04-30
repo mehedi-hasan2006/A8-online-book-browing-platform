@@ -9,12 +9,35 @@ import {
   Input,
   Label,
   TextField,
+  toast,
 } from "@heroui/react";
 import Link from "next/link";
+import { authClient } from "@/lib/auth-client";
 
 export default function LoginPage() {
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    const { data, error } = await authClient.signIn.email(
+      {
+        email,
+        password,
+        callbackURL: "/",
+      },
+      {
+        onSuccess: (res) => {
+          //redirect to the dashboard or sign in page
+          toast.success("Login Successful!");
+        },
+        onError: (res) => {
+          // display the error message
+          toast.danger(res.error.message);
+        },
+      },
+    );
+    console.log({ data, error });
   };
 
   return (
@@ -39,7 +62,7 @@ export default function LoginPage() {
           }}
         >
           <Label>Email</Label>
-          <Input placeholder="john@example.com" />
+          <Input name="email" placeholder="john@example.com" />
           <FieldError />
         </TextField>
 
@@ -63,7 +86,7 @@ export default function LoginPage() {
           }}
         >
           <Label>Password</Label>
-          <Input placeholder="Enter your password" />
+          <Input name="password" placeholder="Enter your password" />
           <Description>
             Must be at least 8 characters with 1 uppercase and 1 number
           </Description>
