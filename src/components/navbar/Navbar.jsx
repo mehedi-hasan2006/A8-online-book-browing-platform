@@ -11,17 +11,17 @@ export default function Navbar() {
   const navlinks = (
     <ul className="flex flex-col md:flex-row gap-4">
       <li
-        className={` hover:font-bold ${currentPath === "/" ? " border-b-2 border-b-violet-500 text-violet-500" : ""}`}
+        className={` hover:font-semibold hover:text-violet-500 ${currentPath === "/" ? " border-b-2 border-b-violet-500 text-violet-500" : ""}`}
       >
         <Link href="/">Home</Link>
       </li>
       <li
-        className={` hover:font-bold ${currentPath === "/all-books" ? "border-b-2 border-b-violet-500 text-violet-500" : ""}`}
+        className={` hover:font-semibold hover:text-violet-500 ${currentPath === "/all-books" ? "border-b-2 border-b-violet-500 text-violet-500" : ""}`}
       >
         <Link href="/all-books">All Books</Link>
       </li>
       <li
-        className={` hover:font-bold  ${currentPath === "/my-profile" ? "border-b-2 border-b-violet-500 text-violet-500" : ""}`}
+        className={` hover:font-semibold hover:text-violet-500  ${currentPath === "/my-profile" ? "border-b-2 border-b-violet-500 text-violet-500" : ""}`}
       >
         <Link href="/my-profile">My Profile</Link>
       </li>
