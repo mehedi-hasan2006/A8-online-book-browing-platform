@@ -1,9 +1,32 @@
 "use client";
 import { useState } from "react";
-import { Link, Button } from "@heroui/react";
+import { Button } from "@heroui/react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const currentPath = usePathname();
+
+  const navlinks = (
+    <ul className="flex flex-col md:flex-row gap-4">
+      <li
+        className={` hover:font-bold ${currentPath === "/" ? " border-b-2 border-b-violet-500 text-violet-500" : ""}`}
+      >
+        <Link href="/">Home</Link>
+      </li>
+      <li
+        className={` hover:font-bold ${currentPath === "/all-books" ? "border-b-2 border-b-violet-500 text-violet-500" : ""}`}
+      >
+        <Link href="/all-books">All Books</Link>
+      </li>
+      <li
+        className={` hover:font-bold  ${currentPath === "/my-profile" ? "border-b-2 border-b-violet-500 text-violet-500" : ""}`}
+      >
+        <Link href="/my-profile">My Profile</Link>
+      </li>
+    </ul>
+  );
 
   return (
     <nav className=" w-full border-b border-separator bg-background/70 backdrop-blur-lg">
@@ -44,53 +67,17 @@ export default function Navbar() {
             <p className="font-bold">ACME</p>
           </div>
         </div>
-        <ul className="hidden items-center gap-4 md:flex">
-          <li>
-            <Link href="#">Features</Link>
-          </li>
-          <li>
-            <Link
-              href="#"
-              className="font-medium text-accent"
-              aria-current="page"
-            >
-              Dashboard
-            </Link>
-          </li>
-          <li>
-            <Link href="#">Pricing</Link>
-          </li>
-        </ul>
-        <div className="hidden items-center gap-4 md:flex">
-          <Link href="#">Login</Link>
-          <Button>Sign Up</Button>
+        <div className="hidden items-center gap-4 md:flex">{navlinks}</div>
+        <div className="flex items-center gap-4 md:flex">
+          <Link href="/login">Login</Link>
+          <Button className="bg-violet-500">
+            <Link href="/signup">Sign Up</Link>
+          </Button>
         </div>
       </header>
       {isMenuOpen && (
         <div className="border-t border-separator md:hidden">
-          <ul className="flex flex-col gap-2 p-4">
-            <li>
-              <Link href="#" className="block py-2">
-                Features
-              </Link>
-            </li>
-            <li>
-              <Link href="#" className="block py-2 font-medium text-accent">
-                Dashboard
-              </Link>
-            </li>
-            <li>
-              <Link href="#" className="block py-2">
-                Pricing
-              </Link>
-            </li>
-            <li className="mt-4 flex flex-col gap-2 border-t border-separator pt-4">
-              <Link href="#" className="block py-2">
-                Login
-              </Link>
-              <Button className="w-full">Sign Up</Button>
-            </li>
-          </ul>
+          <ul className="flex flex-col gap-2 p-4">{navlinks}</ul>
         </div>
       )}
     </nav>
