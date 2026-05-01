@@ -13,8 +13,8 @@ export default function Navbar() {
   const getData = session?.data?.user;
   const isLoading = session?.isPending;
 
-  const handleLogout = () => {
-    authClient.signOut();
+  const handleLogout = async () => {
+    await authClient.signOut();
     setIsMenuOpen(false);
   };
 

@@ -6,7 +6,7 @@
     "description": "A thrilling story of a group of friends discovering a mysterious island.",
     "category": "Story",
     "available_quantity": 8,
-    "image_url": "https://example.com/images/lost_island.jpg"
+    "image_url": "https://i.ibb.co.com/r2JWSxSg/RGB-The-Lost-Island-9780702271182-Cover.jpg"
   },
   {
     "id": 2,
@@ -15,7 +15,7 @@
     "description": "A beginner-friendly guide to learning modern JavaScript.",
     "category": "Tech",
     "available_quantity": 12,
-    "image_url": "https://example.com/images/js_essentials.jpg"
+    "image_url": "https://i.ibb.co.com/XxDkPCn9/139426321-X.jpg"
   },
   {
     "id": 3,
@@ -24,7 +24,7 @@
     "description": "An introduction to space science and the mysteries of the universe.",
     "category": "Science",
     "available_quantity": 5,
-    "image_url": "https://example.com/images/space_science.jpg"
+    "image_url": "https://i.ibb.co.com/ht3qj6V/91e-PEJy-Q22-L-AC-UF1000-1000-QL80.jpg"
   },
   {
     "id": 4,
@@ -33,7 +33,7 @@
     "description": "A suspenseful story uncovering secrets buried for decades.",
     "category": "Story",
     "available_quantity": 7,
-    "image_url": "https://example.com/images/hidden_truth.jpg"
+    "image_url": "https://i.ibb.co.com/SwpP25mW/images.jpg"
   },
   {
     "id": 5,
@@ -42,7 +42,7 @@
     "description": "Learn Python programming from scratch with simple examples.",
     "category": "Tech",
     "available_quantity": 10,
-    "image_url": "https://example.com/images/python_basics.jpg"
+    "image_url": "https://i.ibb.co.com/n8PmtrJY/images-1.jpg"
   },
   {
     "id": 6,
@@ -51,7 +51,7 @@
     "description": "A simplified guide to understanding the human body.",
     "category": "Science",
     "available_quantity": 6,
-    "image_url": "https://example.com/images/anatomy.jpg"
+    "image_url": "https://i.ibb.co.com/9HDB1FGM/images.png"
   },
   {
     "id": 7,
@@ -60,7 +60,7 @@
     "description": "An emotional story of love, loss, and self-discovery.",
     "category": "Story",
     "available_quantity": 9,
-    "image_url": "https://example.com/images/final_journey.jpg"
+    "image_url": "https://i.ibb.co.com/KphDnwt0/images-2.jpg"
   },
   {
     "id": 8,
@@ -69,7 +69,7 @@
     "description": "A complete guide to becoming a modern web developer.",
     "category": "Tech",
     "available_quantity": 11,
-    "image_url": "https://example.com/images/web_dev.jpg"
+    "image_url": "https://i.ibb.co.com/fVrV6h81/54330264.jpg"
   },
   {
     "id": 9,
@@ -78,7 +78,7 @@
     "description": "Breaking down complex physics concepts into simple explanations.",
     "category": "Science",
     "available_quantity": 4,
-    "image_url": "https://example.com/images/physics_easy.jpg"
+    "image_url": "https://i.ibb.co.com/DcLMp71/71-Pz-RJTq-Uc-L-UF1000-1000-QL80.jpg"
   },
   {
     "id": 10,
@@ -87,7 +87,7 @@
     "description": "A detective story filled with suspense and unexpected twists.",
     "category": "Story",
     "available_quantity": 6,
-    "image_url": "https://example.com/images/mystery_night.jpg"
+    "image_url": "https://i.ibb.co.com/d0gWtNDB/71ftvooug-QL-AC-UF1000-1000-QL80.jpg"
   },
   {
     "id": 11,
@@ -96,7 +96,7 @@
     "description": "Step-by-step learning of React.js for building modern UI.",
     "category": "Tech",
     "available_quantity": 13,
-    "image_url": "https://example.com/images/react_beginners.jpg"
+    "image_url": "https://i.ibb.co.com/m53MGJKq/1-Zr-U9-Ue-g-vs5r-H6cy-V4ikw.png"
   },
   {
     "id": 12,
@@ -105,6 +105,6 @@
     "description": "Understanding the causes and effects of climate change.",
     "category": "Science",
     "available_quantity": 5,
-    "image_url": "https://example.com/images/climate_change.jpg"
+    "image_url": "https://i.ibb.co.com/B5kpNCmp/download.jpg"
   }
 ]
