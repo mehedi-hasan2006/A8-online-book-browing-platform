@@ -95,17 +95,19 @@ export default function Navbar() {
           ) : (
             <Link href="/login">Login</Link>
           )}
-          <Button className="bg-violet-500">
+          <div className="">
             {isLoading ? (
               <span>Loading...</span>
             ) : getData ? (
-              <div onClick={handleLogout} className="w-full h-full">
+              <Button onClick={handleLogout} className="">
                 Logout
-              </div>
+              </Button>
             ) : (
-              <Link href="/signup">Sign Up</Link>
+              <Button>
+                <Link href="/signup">Sign Up</Link>
+              </Button>
             )}
-          </Button>
+          </div>
         </div>
       </header>
       {isMenuOpen && (

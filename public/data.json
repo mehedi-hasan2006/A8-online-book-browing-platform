@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "title": "The Lost Island",
+    "author": "Ayesha Rahman",
+    "description": "A thrilling story of a group of friends discovering a mysterious island.",
+    "category": "Story",
+    "available_quantity": 8,
+    "image_url": "https://example.com/images/lost_island.jpg"
+  },
+  {
+    "id": 2,
+    "title": "JavaScript Essentials",
+    "author": "Mehedi Hasan",
+    "description": "A beginner-friendly guide to learning modern JavaScript.",
+    "category": "Tech",
+    "available_quantity": 12,
+    "image_url": "https://example.com/images/js_essentials.jpg"
+  },
+  {
+    "id": 3,
+    "title": "The Science of Space",
+    "author": "Dr. Anika Sultana",
+    "description": "An introduction to space science and the mysteries of the universe.",
+    "category": "Science",
+    "available_quantity": 5,
+    "image_url": "https://example.com/images/space_science.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Hidden Truth",
+    "author": "Tanvir Ahmed",
+    "description": "A suspenseful story uncovering secrets buried for decades.",
+    "category": "Story",
+    "available_quantity": 7,
+    "image_url": "https://example.com/images/hidden_truth.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Python Programming Basics",
+    "author": "Nusrat Jahan",
+    "description": "Learn Python programming from scratch with simple examples.",
+    "category": "Tech",
+    "available_quantity": 10,
+    "image_url": "https://example.com/images/python_basics.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Human Anatomy 101",
+    "author": "Dr. Faisal Karim",
+    "description": "A simplified guide to understanding the human body.",
+    "category": "Science",
+    "available_quantity": 6,
+    "image_url": "https://example.com/images/anatomy.jpg"
+  },
+  {
+    "id": 7,
+    "title": "The Final Journey",
+    "author": "Sadia Noor",
+    "description": "An emotional story of love, loss, and self-discovery.",
+    "category": "Story",
+    "available_quantity": 9,
+    "image_url": "https://example.com/images/final_journey.jpg"
+  },
+  {
+    "id": 8,
+    "title": "Web Development Guide",
+    "author": "Rakib Hossain",
+    "description": "A complete guide to becoming a modern web developer.",
+    "category": "Tech",
+    "available_quantity": 11,
+    "image_url": "https://example.com/images/web_dev.jpg"
+  },
+  {
+    "id": 9,
+    "title": "Physics Made Easy",
+    "author": "Dr. Shafiq Islam",
+    "description": "Breaking down complex physics concepts into simple explanations.",
+    "category": "Science",
+    "available_quantity": 4,
+    "image_url": "https://example.com/images/physics_easy.jpg"
+  },
+  {
+    "id": 10,
+    "title": "Mystery of the Night",
+    "author": "Imran Kabir",
+    "description": "A detective story filled with suspense and unexpected twists.",
+    "category": "Story",
+    "available_quantity": 6,
+    "image_url": "https://example.com/images/mystery_night.jpg"
+  },
+  {
+    "id": 11,
+    "title": "React for Beginners",
+    "author": "Sharmin Akter",
+    "description": "Step-by-step learning of React.js for building modern UI.",
+    "category": "Tech",
+    "available_quantity": 13,
+    "image_url": "https://example.com/images/react_beginners.jpg"
+  },
+  {
+    "id": 12,
+    "title": "Climate Change Explained",
+    "author": "Dr. Rezaul Karim",
+    "description": "Understanding the causes and effects of climate change.",
+    "category": "Science",
+    "available_quantity": 5,
+    "image_url": "https://example.com/images/climate_change.jpg"
+  }
+]
