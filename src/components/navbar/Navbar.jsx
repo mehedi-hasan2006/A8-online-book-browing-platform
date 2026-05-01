@@ -4,6 +4,8 @@ import { Button } from "@heroui/react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { authClient, useSession } from "@/lib/auth-client";
+import logo from "@/assets/img/logo.png";
+import Image from "next/image";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -83,7 +85,9 @@ export default function Navbar() {
             </svg>
           </button>
           <div className="flex items-center gap-3">
-            <p className="font-bold">ACME</p>
+            <Link href="/">
+              <Image src={logo} alt="logo" className="w-15 h-15" />
+            </Link>
           </div>
         </div>
         <div className="hidden items-center gap-4 md:flex">{navlinks}</div>

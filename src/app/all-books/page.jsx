@@ -10,7 +10,7 @@ function AllBookPage() {
   const [books, setBooks] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
   const fetchData = async () => {
     try {
@@ -24,10 +24,8 @@ function AllBookPage() {
         ...new Set(data.map((book) => book.category).filter(Boolean)),
       ];
       setCategories(uniqueCategories);
-      setLoading(false);
     } catch (error) {
       console.error("Error fetching books:", error);
-      setLoading(false);
     }
   };
 
@@ -41,20 +39,12 @@ function AllBookPage() {
       ? books
       : books.filter((book) => book.category === selectedCategory);
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-violet-600"></div>
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen bg-linear-to-b from-gray-50 to-white">
       <div className="container mx-auto px-4 py-8">
         {/* Header Section */}
         <div className="text-center mb-10">
-          <h1 className="text-4xl md:text-5xl font-bold bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <h1 className="animate__animated animate__bounce text-4xl md:text-5xl font-bold bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
             Discover Books
           </h1>
           <p className="mt-3 text-gray-600 text-lg">
@@ -218,34 +208,6 @@ function AllBookPage() {
                 </div>
               ))}
             </div>
-
-            {/* Empty State */}
-            {filteredBooks.length === 0 && (
-              <div className="text-center py-16">
-                <svg
-                  className="w-16 h-16 text-gray-400 mx-auto mb-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                  />
-                </svg>
-                <p className="text-gray-500 text-lg font-medium">
-                  No books found in this category
-                </p>
-                <button
-                  onClick={() => setSelectedCategory("all")}
-                  className="mt-4 text-purple-600 hover:text-purple-700 font-medium"
-                >
-                  View all books
-                </button>
-              </div>
-            )}
           </div>
         </div>
       </div>
@@ -253,4 +215,4 @@ function AllBookPage() {
   );
 }
 
-export default AllBookPage;
+export default AllBookPage;  
