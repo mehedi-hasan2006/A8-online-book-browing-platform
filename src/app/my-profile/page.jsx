@@ -1,9 +1,123 @@
-import React from 'react'
+"use client";
+
+import { authClient, useSession } from "@/lib/auth-client";
+import {
+  Button,
+  Input,
+  Label,
+  Modal,
+  Surface,
+  TextField,
+  Avatar,
+} from "@heroui/react";
+import { FaEdit } from "react-icons/fa";
 
 function MyProfilePage() {
+  const { data: session } = authClient.useSession();
+  const info = session?.user;
+
+  const onSubmit = async (e) => {
+    const name = e.target.name.value;
+    const photo_url = e.target.photo_url.value;
+
+    await authClient.updateUser({
+      name,
+      photo_url,
+    });
+  };
+
   return (
-    <div>MyProfilePage</div>
-  )
+    <div className="min-h-screen bg-slate-100 flex items-center justify-center p-4">
+      <div className="w-full max-w-md bg-white/80 backdrop-blur-lg shadow-xl rounded-2xl p-8 border border-purple-100 text-center space-y-5">
+        <h1 className="text-3xl font-bold text-purple-600">My Profile</h1>
+
+        <div className="flex justify-center">
+          <Avatar className="size-28 border-4 border-purple-300 shadow-md">
+            <Avatar.Image
+              alt={info?.name}
+              src={info?.photo_url}
+              referrerPolicy="no-referrer"
+            />
+            <Avatar.Fallback>{info?.name?.charAt(0) || "U"}</Avatar.Fallback>
+          </Avatar>
+        </div>
+
+        <div className="space-y-1">
+          <p className="text-xl font-semibold text-gray-700">
+            {info?.name || "No Name"}
+          </p>
+          <p className="text-gray-500 text-sm">{info?.email}</p>
+        </div>
+
+        {/* Modal */}
+        <Modal>
+          <Button className="bg-purple-500 hover:bg-purple-600 text-white px-6">
+            <FaEdit className="mr-2" />
+            Edit Profile
+          </Button>
+
+          <Modal.Backdrop>
+            <Modal.Container placement="center">
+              <Modal.Dialog className="sm:max-w-md rounded-xl">
+                <Modal.CloseTrigger />
+
+                <Modal.Header>
+                  <Modal.Icon className="bg-purple-200 text-purple-600">
+                    <FaEdit />
+                  </Modal.Icon>
+                  <Modal.Heading>Edit Profile</Modal.Heading>
+                </Modal.Header>
+
+                <Modal.Body className="p-6">
+                  <Surface>
+                    <form onSubmit={onSubmit} className="flex flex-col gap-4">
+                      {/* Name */}
+                      <TextField className="w-full">
+                        <Label>Name</Label>
+                        <Input
+                          name="name"
+                          defaultValue={info?.name}
+                          placeholder="Enter your name"
+                        />
+                      </TextField>
+
+                      {/* Photo */}
+                      <TextField className="w-full">
+                        <Label>Image URL</Label>
+                        <Input
+                          name="photo_url"
+                          defaultValue={info?.photo_url}
+                          placeholder="Enter your image URL"
+                        />
+                      </TextField>
+
+                      <Modal.Footer>
+                        <Button
+                          slot="close"
+                          variant="secondary"
+                          className="text-purple-500"
+                        >
+                          Cancel
+                        </Button>
+
+                        <Button
+                          type="submit"
+                          slot="close"
+                          className="bg-purple-500 hover:bg-purple-600 text-white"
+                        >
+                          Update
+                        </Button>
+                      </Modal.Footer>
+                    </form>
+                  </Surface>
+                </Modal.Body>
+              </Modal.Dialog>
+            </Modal.Container>
+          </Modal.Backdrop>
+        </Modal>
+      </div>
+    </div>
+  );
 }
 
-export default MyProfilePage
+export default MyProfilePage;
