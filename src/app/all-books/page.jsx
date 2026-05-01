@@ -185,6 +185,7 @@ function AllBookPage() {
                       alt={item.title}
                       width={120}
                       height={160}
+                      loading="eager"
                       className="object-contain max-h-full shadow-lg rounded"
                     />
                     {item.category && (
@@ -207,7 +208,7 @@ function AllBookPage() {
                     )}
 
                     <div className="mt-4">
-                      <Link href={`/books/${item.id}`}>
+                      <Link href={`/book/${item.id}`}>
                         <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-2.5 rounded-lg transition-colors">
                           View Details
                         </Button>
