@@ -1,36 +1,252 @@
+"use client";
+
 import Search from "@/components/search/Search";
 import { Button } from "@heroui/react";
 import Image from "next/image";
+import Link from "next/link";
+import { useState, useEffect } from "react";
 
-async function AllBookPage() {
-  const res = await fetch(
-    "https://online-book-browing-platform.vercel.app/data.json",
-  );
-  const data = await res.json();
+function AllBookPage() {
+  const [books, setBooks] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [loading, setLoading] = useState(true);
+
+  const fetchData = async () => {
+    try {
+      const res = await fetch(
+        "https://online-book-browing-platform.vercel.app/data.json",
+      );
+      const data = await res.json();
+      setBooks(data);
+
+      const uniqueCategories = [
+        ...new Set(data.map((book) => book.category).filter(Boolean)),
+      ];
+      setCategories(uniqueCategories);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching books:", error);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  // Filter books based on selected category
+  const filteredBooks =
+    selectedCategory === "all"
+      ? books
+      : books.filter((book) => book.category === selectedCategory);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-violet-600"></div>
+      </div>
+    );
+  }
 
   return (
-    <div className="container mx-auto">
-      <div className="mt-5 font-semibold text-3xl">
-        <h1>All Books</h1>
-      </div>
-      <div className="flex justify-center mt-5">
-        <Search />
-      </div>
-      <div className="mt-6 grid grid-cols-4 gap-5">
-        {data.map((item) => (
-          <div key={item.id}>
-            <div>
-              <Image
-                src={item.image_url}
-                alt={item.title}
-                width={100}
-                height={100}
-              />
+    <div className="min-h-screen bg-linear-to-b from-gray-50 to-white">
+      <div className="container mx-auto px-4 py-8">
+        {/* Header Section */}
+        <div className="text-center mb-10">
+          <h1 className="text-4xl md:text-5xl font-bold bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Discover Books
+          </h1>
+          <p className="mt-3 text-gray-600 text-lg">
+            Explore our collection of {books.length} amazing books
+          </p>
+        </div>
+
+        {/* Search Section */}
+        <div className="container flex justify-center mx-auto mb-8">
+          <Search />
+        </div>
+
+        <div className="sm:flex  gap-8 pb-10">
+          {/* Left Sidebar - Categories */}
+          <div className="w-auto shrink-0">
+            <div className="bg-white rounded-xl shadow-md p-6 sticky top-4">
+              <h2 className="text-lg font-bold text-gray-800 mb-4 flex items-center">
+                <svg
+                  className="w-5 h-5 mr-2 text-purple-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h7"
+                  />
+                </svg>
+                Categories
+              </h2>
+
+              <div className="space-y-1 mt-5">
+                {/* All Books Button */}
+                <button
+                  onClick={() => setSelectedCategory("all")}
+                  className={`w-full text-left px-4 py-2.5 rounded-lg transition-all duration-200 font-medium flex  items-center ${
+                    selectedCategory === "all"
+                      ? "bg-purple-600 text-white shadow-md"
+                      : "text-gray-700 hover:bg-gray-100"
+                  }`}
+                >
+                  <span className="flex items-center">
+                    <svg
+                      className="w-4 h-4 mr-2"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                      />
+                    </svg>
+                    All Books
+                  </span>
+                  <span className="float-right text-sm ml-2">
+                    ({books.length})
+                  </span>
+                </button>
+
+                {/* Category Buttons */}
+                {categories.map((category) => (
+                  <button
+                    key={category}
+                    onClick={() => setSelectedCategory(category)}
+                    className={`w-full text-left px-4 py-2.5 rounded-lg transition-all duration-200 font-medium flex  items-center ${
+                      selectedCategory === category
+                        ? "bg-purple-600 text-white shadow-md"
+                        : "text-gray-700 hover:bg-gray-100"
+                    }`}
+                  >
+                    <span className="flex items-center">
+                      <svg
+                        className="w-4 h-4 mr-2"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
+                        />
+                      </svg>
+                      {category}
+                    </span>
+                    <span className="float-right text-sm ml-2">
+                      (
+                      {
+                        books.filter((book) => book.category === category)
+                          .length
+                      }
+                      )
+                    </span>
+                  </button>
+                ))}
+              </div>
             </div>
-            <p> {item.title}</p>
-            <Button>Details</Button>
           </div>
-        ))}
+
+          <div className="flex-1 mt-5">
+            <div className="mb-6">
+              <h2 className="text-2xl font-semibold text-gray-800">
+                {selectedCategory === "all" ? "All Books" : selectedCategory}
+              </h2>
+              <p className="text-gray-500 mt-1">
+                {filteredBooks.length}{" "}
+                {filteredBooks.length === 1 ? "book" : "books"} found
+              </p>
+            </div>
+
+            {/* Books Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredBooks.map((item) => (
+                <div
+                  key={item.id}
+                  className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-blue-200"
+                >
+                  {/* Book Cover */}
+                  <div className="relative h-48 bg-linear-to-br from-gray-100 to-gray-50 flex items-center justify-center p-4 group-hover:scale-105 transition-transform duration-300">
+                    <Image
+                      src={item.image_url}
+                      alt={item.title}
+                      width={120}
+                      height={160}
+                      className="object-contain max-h-full shadow-lg rounded"
+                    />
+                    {item.category && (
+                      <span className="absolute top-3 right-3 bg-purple-500 text-white text-xs px-2 py-1 rounded-full">
+                        {item.category}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Book Details */}
+                  <div className="p-5">
+                    <h3 className="font-semibold text-gray-800 line-clamp-2 hover:text-purple-600 transition-colors min-h-12">
+                      {item.title}
+                    </h3>
+
+                    {item.author && (
+                      <p className="text-sm text-gray-500 mt-1">
+                        by {item.author}
+                      </p>
+                    )}
+
+                    <div className="mt-4">
+                      <Link href={`/books/${item.id}`}>
+                        <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-2.5 rounded-lg transition-colors">
+                          View Details
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Empty State */}
+            {filteredBooks.length === 0 && (
+              <div className="text-center py-16">
+                <svg
+                  className="w-16 h-16 text-gray-400 mx-auto mb-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                  />
+                </svg>
+                <p className="text-gray-500 text-lg font-medium">
+                  No books found in this category
+                </p>
+                <button
+                  onClick={() => setSelectedCategory("all")}
+                  className="mt-4 text-purple-600 hover:text-purple-700 font-medium"
+                >
+                  View all books
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

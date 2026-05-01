@@ -59,7 +59,7 @@ function Search() {
           )}
         </SearchField>
         <Button
-          className=""
+          className="bg-purple-500"
           isDisabled={value.length < MIN_LENGTH}
           isPending={isSubmitting}
           type="submit"
