@@ -54,7 +54,7 @@ function AllBookPage() {
 
         {/* Search Section */}
         <div className="container flex justify-center mx-auto mb-8">
-          <Search />
+          <Search books={books} setBooks={setBooks} />
         </div>
 
         <div className="sm:flex  gap-8 pb-10">
@@ -176,7 +176,7 @@ function AllBookPage() {
                       width={120}
                       height={160}
                       loading="eager"
-                      className="object-contain max-h-full shadow-lg rounded"
+                      className="object-contain max-h-full shadow-lg rounded w-[120px] h-[160px]"
                     />
                     {item.category && (
                       <span className="absolute top-3 right-3 bg-amber-500 text-white text-xs px-2 py-1 rounded-full">
@@ -207,6 +207,9 @@ function AllBookPage() {
                   </div>
                 </div>
               ))}
+            </div>
+            <div className="text-2xl text-center font-semibold text-rose-500 mt-5">
+              {books.length === 0 && "No Books Found"}
             </div>
           </div>
         </div>

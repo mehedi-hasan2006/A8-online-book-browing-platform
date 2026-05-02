@@ -10,9 +10,10 @@ import {
 } from "@heroui/react";
 import React, { useState } from "react";
 
-function Search() {
+function Search({ books, setBooks }) {
   const [value, setValue] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
   const MIN_LENGTH = 3;
   const isInvalid = value.length > 0 && value.length < MIN_LENGTH;
   const handleSubmit = (e) => {
@@ -24,11 +25,17 @@ function Search() {
     // Simulate API call
     setTimeout(() => {
       console.log("Search submitted:", { query: value });
-      setValue("");
+
       setIsSubmitting(false);
     }, 1500);
   };
-
+  //handleSearchBtn
+  function handleSearchBtn() {
+    const expectedBook = books.filter((book) =>
+      book.title.toLowerCase().includes(searchInput.toLowerCase()),
+    );
+    setBooks(expectedBook);
+  }
   return (
     <div>
       <Form className="flex  items-center gap-4" onSubmit={handleSubmit}>
@@ -42,7 +49,10 @@ function Search() {
           <Label>Search products</Label>
           <SearchField.Group className="focus:ring-2 ring-amber-500">
             <SearchField.SearchIcon />
-            <SearchField.Input placeholder="Search products..." />
+            <SearchField.Input
+              placeholder="Search products..."
+              onChange={(e) => setSearchInput(e.target.value)}
+            />
             <SearchField.ClearButton />
           </SearchField.Group>
           {isInvalid ? (
@@ -61,6 +71,7 @@ function Search() {
           isPending={isSubmitting}
           type="submit"
           variant="primary"
+          onClick={handleSearchBtn}
         >
           {isSubmitting ? (
             <>
