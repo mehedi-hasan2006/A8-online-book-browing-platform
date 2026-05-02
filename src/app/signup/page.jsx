@@ -45,6 +45,13 @@ export default function SignupPage() {
     );
   };
 
+  // Google Sign In Fucntion
+  const handleGoogleSignIn = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    });
+  };
+
   return (
     <div className="flex flex-col min-h-screen justify-center">
       <div className="flex  justify-center items-center ">
@@ -144,6 +151,7 @@ export default function SignupPage() {
           <Button
             className="w-full bg-linear-to-r from-amber-500 to-rose-500 text-white"
             variant="tertiary"
+            onClick={handleGoogleSignIn}
           >
             <Icon icon="devicon:google" />
             Sign in with Google

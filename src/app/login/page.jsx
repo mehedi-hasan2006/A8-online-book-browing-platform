@@ -42,6 +42,14 @@ export default function LoginPage() {
     console.log({ data, error });
   };
 
+  // Google Sign In Fucntion
+  const handleGoogleSignIn = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    });
+    toast.success("Login Successful!");
+  };
+
   return (
     <div className="flex flex-col justify-center items-center min-h-screen ">
       <div className="mb-5 bg-white p-5 shadow-2xl rounded-md">
@@ -69,7 +77,11 @@ export default function LoginPage() {
             }}
           >
             <Label>Email</Label>
-            <Input className="focus:ring-2 ring-amber-500" name="email" placeholder="john@example.com" />
+            <Input
+              className="focus:ring-2 ring-amber-500"
+              name="email"
+              placeholder="john@example.com"
+            />
             <FieldError />
           </TextField>
 
@@ -93,7 +105,11 @@ export default function LoginPage() {
             }}
           >
             <Label>Password</Label>
-            <Input className="focus:ring-2 ring-amber-500" name="password" placeholder="Enter your password" />
+            <Input
+              className="focus:ring-2 ring-amber-500"
+              name="password"
+              placeholder="Enter your password"
+            />
             <Description>
               Must be at least 8 characters with 1 uppercase and 1 number
             </Description>
@@ -124,6 +140,7 @@ export default function LoginPage() {
           <Button
             className="w-full bg-linear-to-r from-amber-500 to-rose-500 text-white"
             variant="tertiary"
+            onClick={handleGoogleSignIn}
           >
             <Icon icon="devicon:google" />
             Sign in with Google
