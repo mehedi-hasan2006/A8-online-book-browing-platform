@@ -158,7 +158,7 @@ export default function Hero() {
             <Button
               as={Link}
               href="/all-books"
-              className="px-8 py-4 rounded-full text-white font-medium text-base transition-all duration-300 hover:scale-105 active:scale-95"
+              className="px-8 py-4 rounded-full bg-linear-to-r from-amber-500 to-rose-500 text-white font-medium text-base transition-all duration-300 hover:scale-105 active:scale-95"
             >
               Explore the Library →
             </Button>

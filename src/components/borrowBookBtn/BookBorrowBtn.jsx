@@ -15,7 +15,7 @@ function BookBorrowBtn({ item }) {
     <div>
       <Button
         onClick={handleBorrow}
-        className="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 rounded-xl transition-all transform hover:scale-105 shadow-lg hover:shadow-xl"
+        className="flex-1 bg-linear-to-r from-amber-500 to-rose-500 text-white font-semibold py-3 rounded-xl transition-all transform hover:scale-105 shadow-lg hover:shadow-xl"
       >
         <FaCheck />
         Borrow this Book

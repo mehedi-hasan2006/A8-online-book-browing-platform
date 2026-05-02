@@ -29,10 +29,12 @@ function MyProfilePage() {
   return (
     <div className="min-h-screen bg-slate-100 flex items-center justify-center p-4">
       <div className="w-full max-w-md bg-white/80 backdrop-blur-lg shadow-xl rounded-2xl p-8 border border-purple-100 text-center space-y-5">
-        <h1 className="text-3xl font-bold text-purple-600">My Profile</h1>
+        <h1 className="text-3xl font-bold bg-linear-to-r from-amber-500 to-rose-500 text-transparent bg-clip-text">
+          My Profile
+        </h1>
 
         <div className="flex justify-center">
-          <Avatar className="size-28 border-4 border-purple-300 shadow-md">
+          <Avatar className="size-28 border-4 border-amber-300 shadow-md">
             <Avatar.Image
               alt={info?.name}
               src={info?.photo_url}
@@ -51,7 +53,7 @@ function MyProfilePage() {
 
         {/* Modal */}
         <Modal>
-          <Button className="bg-purple-500 hover:bg-purple-600 text-white px-6">
+          <Button className="bg-linear-to-r from-amber-500 to-rose-500 text-white  px-6">
             <FaEdit className="mr-2" />
             Edit Profile
           </Button>
@@ -62,7 +64,7 @@ function MyProfilePage() {
                 <Modal.CloseTrigger />
 
                 <Modal.Header>
-                  <Modal.Icon className="bg-purple-200 text-purple-600">
+                  <Modal.Icon className="bg-rose-200 text-rose-600">
                     <FaEdit />
                   </Modal.Icon>
                   <Modal.Heading>Edit Profile</Modal.Heading>
@@ -95,7 +97,7 @@ function MyProfilePage() {
                         <Button
                           slot="close"
                           variant="secondary"
-                          className="text-purple-500"
+                          className="text-rose-500"
                         >
                           Cancel
                         </Button>
@@ -103,7 +105,7 @@ function MyProfilePage() {
                         <Button
                           type="submit"
                           slot="close"
-                          className="bg-purple-500 hover:bg-purple-600 text-white"
+                          className="bg-linear-to-r from-amber-500 to-rose-500 text-white"
                         >
                           Update
                         </Button>

@@ -46,7 +46,12 @@ export default function LoginPage() {
     <div className="flex flex-col justify-center items-center min-h-screen ">
       <div className="mb-5 bg-white p-5 shadow-2xl rounded-md">
         <div className="flex justify-center mx-auto">
-          <Image alt="logo" src={logo} className="w-37.5 h-37.5" loading="eager"/>
+          <Image
+            alt="logo"
+            src={logo}
+            className="w-37.5 h-37.5"
+            loading="eager"
+          />
         </div>
         <h1 className="font-bold text-3xl text-center">Login</h1>
 
@@ -64,7 +69,7 @@ export default function LoginPage() {
             }}
           >
             <Label>Email</Label>
-            <Input name="email" placeholder="john@example.com" />
+            <Input className="focus:ring-2 ring-amber-500" name="email" placeholder="john@example.com" />
             <FieldError />
           </TextField>
 
@@ -88,7 +93,7 @@ export default function LoginPage() {
             }}
           >
             <Label>Password</Label>
-            <Input name="password" placeholder="Enter your password" />
+            <Input className="focus:ring-2 ring-amber-500" name="password" placeholder="Enter your password" />
             <Description>
               Must be at least 8 characters with 1 uppercase and 1 number
             </Description>
@@ -97,21 +102,29 @@ export default function LoginPage() {
 
           <div className="flex justify-between items-center">
             <div className="flex gap-2">
-              <Button type="submit">Submit</Button>
-              <Button type="reset" variant="secondary">
+              <Button
+                className="bg-linear-to-r from-amber-500 to-rose-500 text-white"
+                type="submit"
+              >
+                Login
+              </Button>
+              <Button className=" " type="reset" variant="secondary">
                 Reset
               </Button>
             </div>
             <div>
               <p className="text-[#2563eb] font-semibold text-[14px] hover:underline cursor-pointer">
-                <Link href="/signup"> Register?</Link>
+                <Link href="/signup"> Not Register?</Link>
               </p>
             </div>
           </div>
           <div className="text-center text-gray-600 font-semibold">
             <p>OR</p>
           </div>
-          <Button className="w-full" variant="tertiary">
+          <Button
+            className="w-full bg-linear-to-r from-amber-500 to-rose-500 text-white"
+            variant="tertiary"
+          >
             <Icon icon="devicon:google" />
             Sign in with Google
           </Button>

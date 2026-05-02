@@ -44,7 +44,7 @@ function AllBookPage() {
       <div className="container mx-auto px-4 py-8">
         {/* Header Section */}
         <div className="text-center mb-10">
-          <h1 className="animate__animated animate__bounce text-4xl md:text-5xl font-bold bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <h1 className="animate__animated animate__lightSpeedInLeft text-4xl md:text-5xl font-bold bg-linear-to-r from-amber-500 to-rose-500 bg-clip-text text-transparent">
             Discover Books
           </h1>
           <p className="mt-3 text-gray-600 text-lg">
@@ -63,7 +63,7 @@ function AllBookPage() {
             <div className="bg-white rounded-xl shadow-md p-6 sticky top-4">
               <h2 className="text-lg font-bold text-gray-800 mb-4 flex items-center">
                 <svg
-                  className="w-5 h-5 mr-2 text-purple-600"
+                  className="w-5 h-5 mr-2 text-amber-600"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -84,7 +84,7 @@ function AllBookPage() {
                   onClick={() => setSelectedCategory("all")}
                   className={`w-full text-left px-4 py-2.5 rounded-lg transition-all duration-200 font-medium flex  items-center ${
                     selectedCategory === "all"
-                      ? "bg-purple-600 text-white shadow-md"
+                      ? "bg-linear-to-r from-amber-500 to-rose-500 text-white  shadow-md"
                       : "text-gray-700 hover:bg-gray-100"
                   }`}
                 >
@@ -116,7 +116,7 @@ function AllBookPage() {
                     onClick={() => setSelectedCategory(category)}
                     className={`w-full text-left px-4 py-2.5 rounded-lg transition-all duration-200 font-medium flex  items-center ${
                       selectedCategory === category
-                        ? "bg-purple-600 text-white shadow-md"
+                        ? "bg-linear-to-r from-amber-500 to-rose-500 text-white  shadow-md"
                         : "text-gray-700 hover:bg-gray-100"
                     }`}
                   >
@@ -179,7 +179,7 @@ function AllBookPage() {
                       className="object-contain max-h-full shadow-lg rounded"
                     />
                     {item.category && (
-                      <span className="absolute top-3 right-3 bg-purple-500 text-white text-xs px-2 py-1 rounded-full">
+                      <span className="absolute top-3 right-3 bg-amber-500 text-white text-xs px-2 py-1 rounded-full">
                         {item.category}
                       </span>
                     )}
@@ -187,7 +187,7 @@ function AllBookPage() {
 
                   {/* Book Details */}
                   <div className="p-5">
-                    <h3 className="font-semibold text-gray-800 line-clamp-2 hover:text-purple-600 transition-colors min-h-12">
+                    <h3 className="font-semibold text-gray-800 line-clamp-2 hover:text-rose-600 transition-colors min-h-12">
                       {item.title}
                     </h3>
 
@@ -199,7 +199,7 @@ function AllBookPage() {
 
                     <div className="mt-4">
                       <Link href={`/book/${item.id}`}>
-                        <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-2.5 rounded-lg transition-colors">
+                        <Button className="w-full bg-linear-to-r from-amber-500 to-rose-500 hover:scale-103 transform transition-all duration-300 text-white font-medium py-2.5 rounded-lg ">
                           View Details
                         </Button>
                       </Link>
@@ -215,4 +215,4 @@ function AllBookPage() {
   );
 }
 
-export default AllBookPage;  
+export default AllBookPage;

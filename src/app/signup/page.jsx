@@ -20,14 +20,14 @@ export default function SignupPage() {
     e.preventDefault();
 
     const name = e.target.name.value;
-    const photoUrl = e.target.photoUrl.value;
+    const image = e.target.image.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
 
     const { data, error } = await authClient.signUp.email(
       {
         name,
-        photoUrl,
+        image,
         email,
         password,
       },
@@ -43,6 +43,7 @@ export default function SignupPage() {
         },
       },
     );
+    
   };
 
   return (
@@ -57,13 +58,21 @@ export default function SignupPage() {
         >
           <TextField isRequired name="name" type="text">
             <Label>Name</Label>
-            <Input name="name" placeholder="John Doe" />
+            <Input
+              className="focus:ring-2 ring-amber-500"
+              name="name"
+              placeholder="John Doe"
+            />
             <FieldError />
           </TextField>
 
-          <TextField isRequired name="photoUrl" type="text">
+          <TextField isRequired name="image" type="text">
             <Label>Enter Photo Url</Label>
-            <Input name="photoUrl" placeholder="Enter Photo Url" />
+            <Input
+              className="focus:ring-2 ring-amber-500"
+              name="image"
+              placeholder="Enter Photo Url"
+            />
             <FieldError />
           </TextField>
 
@@ -80,7 +89,11 @@ export default function SignupPage() {
             }}
           >
             <Label>Email</Label>
-            <Input name="email" placeholder="john@example.com" />
+            <Input
+              className="focus:ring-2 ring-amber-500"
+              name="email"
+              placeholder="john@example.com"
+            />
             <FieldError />
           </TextField>
 
@@ -104,7 +117,11 @@ export default function SignupPage() {
             }}
           >
             <Label>Password</Label>
-            <Input name="password" placeholder="Enter your password" />
+            <Input
+              className="focus:ring-2 ring-amber-500"
+              name="password"
+              placeholder="Enter your password"
+            />
             <Description>
               Must be at least 8 characters with 1 uppercase and 1 number
             </Description>
@@ -112,9 +129,11 @@ export default function SignupPage() {
           </TextField>
 
           <div className="flex gap-2">
-            <Button type="submit">
-              {/* <Check /> */}
-              Submit
+            <Button
+              className="bg-linear-to-r from-amber-500 to-rose-500 text-white"
+              type="submit"
+            >
+              Register
             </Button>
             <Button type="reset" variant="secondary">
               Reset
@@ -123,7 +142,10 @@ export default function SignupPage() {
           <div className="text-center text-gray-600 font-semibold">
             <p>OR</p>
           </div>
-          <Button className="w-full" variant="tertiary">
+          <Button
+            className="w-full bg-linear-to-r from-amber-500 to-rose-500 text-white"
+            variant="tertiary"
+          >
             <Icon icon="devicon:google" />
             Sign in with Google
           </Button>

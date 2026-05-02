@@ -22,7 +22,7 @@ async function SpecificBookDetailsPage({ params }) {
           </h1>
           <Link
             href="/all-books"
-            className="text-purple-600 hover:text-purple-700 font-medium"
+            className="text-rose-600 hover:text-rose-700 font-medium"
           >
             ← Back to Books
           </Link>
@@ -36,7 +36,7 @@ async function SpecificBookDetailsPage({ params }) {
       {/* Breadcrumb */}
       <div className="container mx-auto px-4 pt-8">
         <div className="flex items-center text-sm text-gray-500 mb-8">
-          <Link href="/" className="hover:text-purple-600 transition-colors">
+          <Link href="/" className="hover:text-rose-600 transition-colors">
             Home
           </Link>
           <svg
@@ -54,7 +54,7 @@ async function SpecificBookDetailsPage({ params }) {
           </svg>
           <Link
             href="/all-books"
-            className="hover:text-purple-600 transition-colors"
+            className="hover:text-rose-600 transition-colors"
           >
             {" "}
             All Books
@@ -86,7 +86,7 @@ async function SpecificBookDetailsPage({ params }) {
 
               {/* Book Image */}
               <div className="relative group">
-                <div className="absolute inset-0 bg-linear-to-r from-blue-500 to-purple-500 rounded-xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                <div className="absolute inset-0 bg-linear-to-r from-amber-500 to-rose-500  rounded-xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
                 <Image
                   src={item.image_url}
                   alt={item.title}
@@ -99,7 +99,7 @@ async function SpecificBookDetailsPage({ params }) {
                 {/* Availability Badge */}
                 <div className="absolute -top-3 -right-3">
                   {item.available_quantity > 0 ? (
-                    <span className="bg-green-500 text-white text-sm px-3 py-1 rounded-full shadow-lg flex items-center">
+                    <span className="bg-amber-500 text-white text-sm px-3 py-1 rounded-full shadow-lg flex items-center">
                       <span className="w-2 h-2 bg-white rounded-full mr-2 animate-pulse"></span>
                       Available
                     </span>
@@ -116,7 +116,7 @@ async function SpecificBookDetailsPage({ params }) {
             <div className="p-8 md:p-12 flex flex-col justify-center">
               {/* Category Badge */}
               {item.category && (
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 mb-4 w-fit">
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-amber-100 text-amber-800 mb-4 w-fit">
                   {item.category}
                 </span>
               )}

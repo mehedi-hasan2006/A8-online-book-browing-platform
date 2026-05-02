@@ -27,21 +27,21 @@ export default function Navbar() {
   const navlinks = (
     <ul className="flex flex-col md:flex-row gap-4">
       <li
-        className={`hover:font-semibold hover:text-violet-500 ${currentPath === "/" ? "border-b-2 border-b-violet-500 text-violet-500" : ""}`}
+        className={`hover:font-semibold  hover:text-rose-500 ${currentPath === "/" ? "border-b-2 border-b-rose-500 text-rose-500 font-semibold" : ""}`}
       >
         <Link href="/" onClick={closeMobileMenu}>
           Home
         </Link>
       </li>
       <li
-        className={`hover:font-semibold hover:text-violet-500 ${currentPath === "/all-books" ? "border-b-2 border-b-violet-500 text-violet-500" : ""}`}
+        className={`hover:font-semibold hover:text-rose-500 ${currentPath === "/all-books" ? "border-b-2 border-b-rose-500 text-rose-500 font-semibold" : ""}`}
       >
         <Link href="/all-books" onClick={closeMobileMenu}>
           All Books
         </Link>
       </li>
       <li
-        className={`hover:font-semibold hover:text-violet-500 ${currentPath === "/my-profile" ? "border-b-2 border-b-violet-500 text-violet-500" : ""}`}
+        className={`hover:font-semibold hover:text-rose-500 ${currentPath === "/my-profile" ? "border-b-2 border-b-rose-500 text-rose-500 font-semibold" : ""}`}
       >
         <Link href="/my-profile" onClick={closeMobileMenu}>
           My Profile
@@ -95,19 +95,24 @@ export default function Navbar() {
           {isLoading ? (
             <span>Loading...</span>
           ) : getData ? (
-            <span>{getData.name}</span>
+            <span> Welcome, {getData?.name}</span>
           ) : (
-            <Link href="/login">Login</Link>
+            <Link
+              className="hover:text-rose-600  hover:font-semibold "
+              href="/login"
+            >
+              Login
+            </Link>
           )}
           <div className="">
             {isLoading ? (
               <span>Loading...</span>
             ) : getData ? (
-              <Button onClick={handleLogout} className="">
+              <Button onClick={handleLogout} className="bg-rose-500">
                 Logout
               </Button>
             ) : (
-              <Button>
+              <Button className="bg-linear-to-r from-amber-500 to-rose-500 text-white">
                 <Link href="/signup">Sign Up</Link>
               </Button>
             )}

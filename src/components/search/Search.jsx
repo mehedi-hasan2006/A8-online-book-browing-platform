@@ -40,12 +40,9 @@ function Search() {
           onChange={setValue}
         >
           <Label>Search products</Label>
-          <SearchField.Group>
+          <SearchField.Group className="focus:ring-2 ring-amber-500">
             <SearchField.SearchIcon />
-            <SearchField.Input
-              className=""
-              placeholder="Search products..."
-            />
+            <SearchField.Input placeholder="Search products..." />
             <SearchField.ClearButton />
           </SearchField.Group>
           {isInvalid ? (
@@ -59,7 +56,7 @@ function Search() {
           )}
         </SearchField>
         <Button
-          className="bg-purple-500"
+          className="bg-linear-to-r from-amber-500 to-rose-500 text-white"
           isDisabled={value.length < MIN_LENGTH}
           isPending={isSubmitting}
           type="submit"
