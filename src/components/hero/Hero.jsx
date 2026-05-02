@@ -1,11 +1,14 @@
 "use client";
 import { Button } from "@heroui/react";
+import Image from "next/image";
 import Link from "next/link";
+import { FaArrowRight } from "react-icons/fa";
 
 const FLOATING_BOOKS = [
   {
-    title: "Dune",
-    author: "Frank Herbert",
+    title: "The Lost Island",
+    author: "Ayesha Rahman",
+    image_url: "https://i.ibb.co.com/r2JWSxSg/RGB-The-Lost-Island-9780702271182-Cover.jpg",
     color: "#c8883a",
     top: "15%",
     left: "5%",
@@ -13,8 +16,9 @@ const FLOATING_BOOKS = [
     delay: "0s",
   },
   {
-    title: "The Great Gatsby",
-    author: "F. Scott Fitzgerald",
+    title: "The Final Journey",
+    author: "Sadia Noor",
+    image_url: "https://i.ibb.co.com/KphDnwt0/images-2.jpg",
     color: "#7c2d3e",
     top: "60%",
     left: "3%",
@@ -22,8 +26,9 @@ const FLOATING_BOOKS = [
     delay: "1s",
   },
   {
-    title: "1984",
-    author: "George Orwell",
+    title: "Physics Made Easy",
+    author: "Dr. Shafiq Islam",
+    image_url: "https://i.ibb.co.com/DcLMp71/71-Pz-RJTq-Uc-L-UF1000-1000-QL80.jpg",
     color: "#1a2744",
     top: "30%",
     right: "4%",
@@ -31,8 +36,9 @@ const FLOATING_BOOKS = [
     delay: "0.5s",
   },
   {
-    title: "Sapiens",
-    author: "Yuval Harari",
+    title: "React for Beginners",
+    author: "Sharmin Akter",
+    image_url: "https://i.ibb.co.com/m53MGJKq/1-Zr-U9-Ue-g-vs5r-H6cy-V4ikw.png",
     color: "#6b7c6a",
     top: "70%",
     right: "3%",
@@ -40,6 +46,8 @@ const FLOATING_BOOKS = [
     delay: "1.5s",
   },
 ];
+
+
 
 export default function Hero() {
   return (
@@ -91,9 +99,10 @@ export default function Hero() {
               style={{ backgroundColor: book.color }}
             >
               <div
-                className="h-16 rounded opacity-30"
+                className=" rounded opacity-30"
                 style={{ backgroundColor: "white" }}
               />
+              <Image src={book.image_url} alt={book.title} width={100} height={50} className="object-cover h-[100px] w-[100px]"/>
               <p className="text-white text-xs font-serif font-bold mt-2 leading-tight">
                 {book.title}
               </p>
@@ -129,9 +138,10 @@ export default function Hero() {
               animationFillMode: "both",
             }}
           >
-            Where Every <span className="italic">Story</span>
+            {" "}
+            Find <span className="italic">Your</span>
             <br />
-            Finds Its Reader
+            Next Read
           </h1>
 
           {/* descriptiojn */}
@@ -155,13 +165,11 @@ export default function Hero() {
               animationFillMode: "both",
             }}
           >
-            <Button
-              as={Link}
-              href="/all-books"
-              className="px-8 py-4 rounded-full bg-linear-to-r from-amber-500 to-rose-500 text-white font-medium text-base transition-all duration-300 hover:scale-105 active:scale-95"
-            >
-              Explore the Library →
-            </Button>
+            <Link href="/all-books">
+              <Button className="px-8 py-4 rounded-full bg-linear-to-r from-amber-500 to-rose-500 text-white font-medium text-base transition-all duration-300 hover:scale-105 active:scale-95">
+                Browse Now <FaArrowRight className="text-xs group-hover/btn:translate-x-1 transition-transform duration-300" />
+              </Button>
+            </Link>
           </div>
 
           {/* Stats */}

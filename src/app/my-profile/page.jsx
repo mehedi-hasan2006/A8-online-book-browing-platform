@@ -18,11 +18,11 @@ function MyProfilePage() {
 
   const onSubmit = async (e) => {
     const name = e.target.name.value;
-    const photo_url = e.target.photo_url.value;
+    const image = e.target.image.value;
 
     await authClient.updateUser({
       name,
-      photo_url,
+      image,
     });
   };
 
@@ -37,7 +37,7 @@ function MyProfilePage() {
           <Avatar className="size-28 border-4 border-amber-300 shadow-md">
             <Avatar.Image
               alt={info?.name}
-              src={info?.photo_url}
+              src={info?.image}
               referrerPolicy="no-referrer"
             />
             <Avatar.Fallback>{info?.name?.charAt(0) || "U"}</Avatar.Fallback>
@@ -84,11 +84,11 @@ function MyProfilePage() {
                       </TextField>
 
                       {/* Photo */}
-                      <TextField className="w-full">
+                      <TextField className="w-full" name="image">
                         <Label>Image URL</Label>
                         <Input
-                          name="photo_url"
-                          defaultValue={info?.photo_url}
+                          name="image"
+                          defaultValue={info?.image}
                           placeholder="Enter your image URL"
                         />
                       </TextField>

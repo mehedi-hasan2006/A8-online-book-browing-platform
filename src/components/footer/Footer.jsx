@@ -162,7 +162,7 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             {/* Copyright */}
             <div className="flex items-center gap-2 text-sm text-gray-500">
-              <span>© {new Date().getFullYear()} eBookBorrow.</span>
+              <span>© 2026 eBookBorrow.</span>
               <span className="hidden sm:inline">·</span>
               <span className="flex items-center gap-1">
                 Crafted with{" "}
