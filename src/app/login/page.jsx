@@ -47,7 +47,6 @@ export default function LoginPage() {
     await authClient.signIn.social({
       provider: "google",
     });
-    toast.success("Login Successful!");
   };
 
   return (
