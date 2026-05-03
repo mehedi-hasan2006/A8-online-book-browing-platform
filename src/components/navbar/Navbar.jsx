@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button } from "@heroui/react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { authClient, useSession } from "@/lib/auth-client";
+import { authClient } from "@/lib/auth-client";
 import logo from "@/assets/img/logo.png";
 import Image from "next/image";
 
@@ -11,10 +11,13 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const currentPath = usePathname();
 
-  const session = useSession();
-  const getData = session?.data?.user;
+  // get session
+  const session = authClient.useSession();
+  const user = session.data?.user;
+
   const isLoading = session?.isPending;
 
+  // function for logout
   const handleLogout = async () => {
     await authClient.signOut();
     setIsMenuOpen(false);
@@ -92,31 +95,29 @@ export default function Navbar() {
         </div>
         <div className="hidden items-center gap-4 md:flex">{navlinks}</div>
         <div className="flex items-center gap-4 md:flex">
-          {isLoading ? (
-            <span>Loading...</span>
-          ) : getData ? (
-            <span> Welcome, {getData?.name}</span>
-          ) : (
-            <Link
-              className="hover:text-rose-600  hover:font-semibold "
-              href="/login"
-            >
-              Login
-            </Link>
-          )}
-          <div className="">
-            {isLoading ? (
-              <span>Loading...</span>
-            ) : getData ? (
-              <Button onClick={handleLogout} className="bg-rose-500">
-                Logout
-              </Button>
-            ) : (
+          {!user && (
+            <div className="flex gap-3 justify-center items-center">
+              <Link
+                className="hover:text-rose-600  hover:font-semibold "
+                href="/login"
+              >
+                Login
+              </Link>
+
               <Button className="bg-linear-to-r from-amber-500 to-rose-500 text-white">
                 <Link href="/signup">Sign Up</Link>
               </Button>
-            )}
-          </div>
+            </div>
+          )}
+
+          {user && (
+            <div className="flex gap-3">
+              <span> Welcome, {user?.name}</span>
+              <Button onClick={handleLogout} className="bg-rose-500">
+                Logout
+              </Button>
+            </div>
+          )}
         </div>
       </header>
       {isMenuOpen && (

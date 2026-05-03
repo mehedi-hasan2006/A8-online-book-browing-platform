@@ -1,10 +1,18 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import { Button, toast } from "@heroui/react";
 import { FaCheck } from "react-icons/fa";
 
 function BookBorrowBtn({ item }) {
-  console.log(item);
+  const session = authClient.useSession();
+  const user = session.data?.user;
+  
   const handleBorrow = () => {
+    if (!user) {
+      toast.danger("Please login to borrow books");
+      return;
+    }
+
     if (item.available_quantity > 0) {
       toast.success("Borrow Successful");
     } else {

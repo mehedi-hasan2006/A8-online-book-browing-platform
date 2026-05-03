@@ -39,7 +39,6 @@ export default function LoginPage() {
         },
       },
     );
-    console.log({ data, error });
   };
 
   // Google Sign In Fucntion

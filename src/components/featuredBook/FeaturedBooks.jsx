@@ -136,7 +136,7 @@ async function FeaturedBooks() {
 
               {/* Book Details Section */}
               <div className="p-5">
-                <h3 className="font-semibold text-gray-800 line-clamp-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-linear-to-r group-hover:from-amber-500 group-hover:to-rose-500 transition-all duration-300 min-h-[3.5rem] ">
+                <h3 className="font-semibold text-gray-800 line-clamp-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-linear-to-r group-hover:from-amber-500 group-hover:to-rose-500 transition-all duration-300 min-h-14 ">
                   {book.title}
                 </h3>
 
