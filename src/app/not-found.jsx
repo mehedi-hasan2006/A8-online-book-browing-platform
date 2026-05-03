@@ -16,7 +16,7 @@ function NotFoundPage() {
         {/*  Button */}
         <Link
           href="/"
-          className="inline-flex items-center px-6 py-3 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 transition-colors"
+          className="inline-flex items-center px-6 py-3 bg-linear-to-r from-amber-500 to-rose-500 text-white font-medium rounded-lg  transition-colors"
         >
           <svg
             className="w-5 h-5 mr-2"
